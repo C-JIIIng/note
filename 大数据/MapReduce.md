@@ -33,7 +33,7 @@ MapReduce将整个并行计算过程抽象到两个函数，在Map中进行数�
   + 负责执行 Partition （分区）、 Sort （排序）、 Spill （溢写）、 Merge （合并 ）、 Fetch （抓取）等工作
   + **Partition 决定了map任务输出的每条数据放入哪个分区，交给哪个reduce任务处理**
   + **Reduce 任务的数量决定了 Partition 数量**
-  + **Partition 编号 = Reduce 任务编号 key hashcode % reduce task number（% 为取模 取余数）**
+  + **Partition 编号 = (Reduce任务编号key_hashcode) % (reduce_task_number)（% 为取模 取余数）**
   + 哈希取模的作用：将 一 个数据集**随机均匀分成若干个子集**
   + 避免和减少 Shuffle 是 MapReduce 程序调优的重点
 
